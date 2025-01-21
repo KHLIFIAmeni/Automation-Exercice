@@ -43,7 +43,7 @@ public class testCase01 {
         WebElement emailInput = driver.findElement(By.cssSelector("[data-qa='signup-email']"));
         // Saisir name et email
         nameInput.sendKeys("Ameni");
-        emailInput.sendKeys("formationtest4888@gmail.com");
+        emailInput.sendKeys("formationtest48825228@gmail.com");
         // localiser le bouton Signup
         WebElement signupButton  = driver.findElement(By.cssSelector("[data-qa='signup-button']"));
         signupButton.click();
@@ -76,13 +76,74 @@ public class testCase01 {
         selectMonths.selectByValue("1");
         selectYears.selectByValue("2020");
         // Localiser l'élément checkbox
-        WebElement checkbox = driver.findElement(By.id("newsletter"));
+        WebElement checkbox1 = driver.findElement(By.id("newsletter"));
 
         // Vérifier si la case est déjà cochée
-        if (!checkbox.isSelected()) {
+        if (!checkbox1.isSelected()) {
             // Cocher la case si elle n'est pas cochée
-            checkbox.click();
+            checkbox1.click();
         }
+        // Localiser l'élément checkbox
+        WebElement checkbox2 = driver.findElement(By.id("optin"));
 
+        // Vérifier si la case est déjà cochée
+        if (!checkbox2.isSelected()) {
+            // Cocher la case si elle n'est pas cochée
+            checkbox2.click();
+        }
+        //Localisation des elements
+        WebElement firstName = driver.findElement(By.cssSelector("[data-qa='first_name']"));
+        WebElement lastName = driver.findElement(By.cssSelector("[data-qa='last_name']"));
+        WebElement Company = driver.findElement(By.cssSelector("[data-qa='company']"));
+        WebElement Address = driver.findElement(By.cssSelector("[data-qa='address']"));
+        WebElement Address2 = driver.findElement(By.cssSelector("[data-qa='address2']"));
+        WebElement Country = driver.findElement(By.cssSelector("[data-qa='country']"));
+        Select countryName = new Select(Country);
+        WebElement State = driver.findElement(By.cssSelector("[data-qa='state']"));
+        WebElement City = driver.findElement(By.cssSelector("[data-qa='city']"));
+        WebElement zipCode = driver.findElement(By.cssSelector("[data-qa='zipcode']"));
+        WebElement  phoneNumber = driver.findElement(By.cssSelector("[data-qa='mobile_number']"));
+        firstName.sendKeys("Khlifi");
+        lastName.sendKeys("Ameni");
+        Company.sendKeys("Horus");
+        Address.sendKeys("le Bardo");
+        Address2.sendKeys("Tunis");
+        countryName.selectByValue("Canada");
+        State.sendKeys("Tunisie");
+        City.sendKeys("aaa");
+        zipCode.sendKeys("2000");
+        phoneNumber.sendKeys("23654897");
+        WebElement createAccount = driver.findElement(By.cssSelector("[data-qa='create-account']"));
+        createAccount.click();
+        // Localiser l'élément contenant le texte "Account Created!"
+        WebElement createAccountText = driver.findElement(By.xpath("//b[normalize-space()='Account Created!']"));
+
+        // Vérifier si le texte est visible
+        if (createAccountText.isDisplayed()) {
+            System.out.println("Le texte 'Account Created!' est visible sur la page.");
+        } else {
+            System.out.println("Le texte 'Account Created!' n'est pas visible sur la page.");
+        }
+        WebElement continueButton = driver.findElement(By.cssSelector("[data-qa='continue-button']"));
+        continueButton.click();
+        String username = "Ameni";
+        WebElement loggedIn = driver.findElement(By.xpath("//li[10]//a[1]"));
+        if (loggedIn.isDisplayed()) {
+            System.out.println("Le texte 'Logged in as " + username + "' est visible.");
+        } else {
+            System.out.println("Le texte 'Logged in as " + username + "' n'est pas visible.");
+        }
+        WebElement deleteAccount = driver.findElement(By.cssSelector("a[href='/delete_account']"));
+        deleteAccount.click();
+        WebElement deleteAccountText = driver.findElement(By.xpath("//b[normalize-space()='Account Deleted!']"));
+        if(deleteAccountText.isDisplayed()){
+            System.out.println("Le texte Account Deleted! est visible");
+        }
+        else{
+            System.out.println("Le texte Account Deleted! est visible");
+        }
+        WebElement buttonContinue = driver.findElement(By.cssSelector("[data-qa='continue-button']"));
+        buttonContinue.click();
+        driver.close();
     }
 }
